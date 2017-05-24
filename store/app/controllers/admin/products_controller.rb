@@ -23,6 +23,6 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :quantity, :type, :size, :price)
+    params.require(:product).permit(:name, :quantity, :type, :size, :price, :avatar)
   end
 end
