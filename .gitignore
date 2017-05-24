@@ -40,3 +40,22 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+
+# ROR Ignore
+
+# Ignore bundler config.
+/store/.bundle
+
+# Ignore the default SQLite database.
+/store/db/*.sqlite3
+/store/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/store/log/*
+/store/tmp/*
+!/store/log/.keep
+!/store/tmp/.keep
+
+# Ignore Byebug command history file.
+/store/.byebug_history
