@@ -4,10 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { GameCanvasComponent } from './game-canvas/game-canvas.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductCardComponent,
+    GameCanvasComponent
   ],
   imports: [
     BrowserModule,
