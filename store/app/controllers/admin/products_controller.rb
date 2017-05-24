@@ -1,17 +1,11 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
-  def new
-    @product = Product.new
-  end
 
   def create
     @product = Product.new(product_params)
     if @product.save
       render json: @product
     end
-  end
-
-  def edit
   end
 
   def update
