@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Product Form</h1>
+  {{diagnostic}}
+
+  <form (ngSubmit)="onSubmit() "#productForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class='form-control' id="name"
+             required
+             [(ngModel)]="model.name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="text" class="form-control" id="quantity"
+             [(ngModel)]="model.quantity" name="quantity">
+    </div>
+
+    <div class="form-group">
+      <label for="size">Size</label>
+      <select class="form-control" id="size" required>
+        <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price (in cents)</label>
+      <input type="text" class="form-control" id="price"
+             [(ngModel)]="model.price" name="price">
+    </div>
+
+    <div class="form-group">
+      <label for="avatarLocation">avatarLocation</label>
+      <input type="file" class="form-control" id="avatarLocation"
+             [(ngModel)]="model.avatarLocation" name="avatarLocation">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

@@ -13,4 +13,10 @@ export class ProductService {
     return this.http.get('http://localhost:3000/products')
       .map(res => res.json());
   }
+
+  createProduct(model){
+    return this.http.post('http://localhost:3000/admin/products', {model})
+      .map(res => res.json())
+      .subscribe(err => console.log(err))
+  }
 }

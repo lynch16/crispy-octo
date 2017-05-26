@@ -2,6 +2,7 @@ class Admin::ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def create
+    byebug
     @product = Product.new(product_params)
     if @product.save
       render json: @product
@@ -23,6 +24,6 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :quantity, :type, :size, :price, :avatar)
+    params.require(:model).permit(:name, :quantity, :type, :size, :price, :avatar)
   end
 end
