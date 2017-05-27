@@ -3,23 +3,22 @@ import { Product } from '../product';
 import { ProductService } from '../product.service'
 
 @Component({
-  selector: 'app-product-form',
-  templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css'],
+  selector: 'app-new-product-form',
+  templateUrl: './new-product-form.component.html',
+  styleUrls: ['./new-product-form.component.css'],
   providers: [ProductService]
 })
-export class ProductFormComponent {
+export class NewProductFormComponent {
 
   sizes = ['xs', 'sm', 'md', 'lg', 'xl']
   types = ['shirt', 'bandana']
-
-  model = new Product('MHT', 10, 'md', 'shirt', 1000, null);
+  model = new Product('', null, '', '', null, null);
   submitted = false;
 
   constructor(private productService: ProductService) {
   }
 
-  loadImage(fileInput: any){
+  uploadImage(fileInput: any){
     if (fileInput.target.files && fileInput.target.files[0]){
       let reader = new FileReader();
       reader.onload = (e: any) => {

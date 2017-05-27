@@ -19,4 +19,10 @@ export class ProductService {
       .map(res => res.json())
       .subscribe(err => console.log(err))
   }
+
+  editProduct(product){
+    return this.http.put('http://localhost:3000/admin/product/' + product.id, {product})
+      .map(res => res.json())
+      .subscribe(err => console.log(err))
+  }
 }

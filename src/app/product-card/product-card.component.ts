@@ -19,13 +19,6 @@ export class ProductCardComponent implements OnInit {
     });
   }
 
-  addProduct(product: Product){
-    this.productService.createProduct(product);
-    this.productService.getProducts().subscribe(products => {
-      this.products = products;
-    });
-  }
-
   ngOnInit() {
   }
 
