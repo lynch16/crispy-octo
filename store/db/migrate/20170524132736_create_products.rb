@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :quantity, default: 0
       t.string :size
       t.integer :price, default: 0
+      t.attachment :picture      
 
       t.timestamps
     end

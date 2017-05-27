@@ -19,6 +19,16 @@ export class ProductFormComponent {
   constructor(private productService: ProductService) {
   }
 
+  loadImage(fileInput: any){
+    if (fileInput.target.files && fileInput.target.files[0]){
+      let reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.model.image_base = e.target.result;
+      }
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  }
+
   addProduct(product: Product){
     this.productService.createProduct(product);
   }

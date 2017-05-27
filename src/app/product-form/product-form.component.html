@@ -30,9 +30,9 @@
     </div>
 
     <div class="form-group">
-      <label for="avatarLocation">avatarLocation</label>
-      <input type="file" class="form-control" id="avatarLocation"
-             [(ngModel)]="model.avatarLocation" name="avatarLocation">
+      <label for="image">Picture</label>
+      <input type="file" class="form-control" id="image"
+             [(ngModel)]="image" name="image" (change)="loadImage($event)">
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
