@@ -2,9 +2,9 @@ class Admin::ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def create
-    byebug
     @product = Product.new(product_params)
     if @product.save
+      @product.parse_image(request.host_with_port)
       render json: @product
     end
   end

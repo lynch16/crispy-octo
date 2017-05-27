@@ -43,6 +43,8 @@ Thumbs.db
 
 
 # ROR Ignore
+#ignore public files
+/store/public/system/*
 
 # Ignore bundler config.
 /store/.bundle

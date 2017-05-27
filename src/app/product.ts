@@ -5,6 +5,6 @@ export class Product {
     public size: string,
     public ptype: string,
     public price: number,
-    public image_base: any
+    public image_base: any,
   ) {}
 }

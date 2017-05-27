@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170524132736) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "picture_url"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end

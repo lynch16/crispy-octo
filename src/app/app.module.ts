@@ -7,15 +7,13 @@ import { AppComponent } from './app.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { GameCanvasComponent } from './game-canvas/game-canvas.component';
 import { ProductFormComponent } from './product-form/product-form.component';
-import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductCardComponent,
     GameCanvasComponent,
-    ProductFormComponent,
-    FileSelectDirective
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,

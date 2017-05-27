@@ -14,7 +14,8 @@ export class ProductCardComponent implements OnInit {
 
   constructor(private productService: ProductService) {
     this.productService.getProducts().subscribe(products => {
-      this.products = products
+      this.products = products;
+      console.log(products);
     });
   }
 
