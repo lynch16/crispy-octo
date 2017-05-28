@@ -12,14 +12,13 @@ export class NewProductFormComponent {
 
   @Input() product = new Product(null, null, null, null, "shirt", null, null); //id, name, quantity, size, ptype, price, image_base;
   @Input() editting = false;
-  @Output() productUpdated = new EventEmitter();
+  @Output() closeForm = new EventEmitter();
 
   sizes = ['xs', 'sm', 'md', 'lg', 'xl']
   types = ['shirt', 'bandana']
   submitted = false;
 
   constructor(private productService: ProductService) {
-
   }
 
   uploadImage(fileInput: any){
@@ -44,7 +43,7 @@ export class NewProductFormComponent {
     if(this.editting === true) {
       console.log('Edits Submitted')
       this.editProduct(this.product);
-      this.productUpdated.emit();
+      this.closeForm.emit();
       this.editting = false;
     } else {
       console.log('New Product Submitted')
@@ -54,7 +53,7 @@ export class NewProductFormComponent {
  }
 
  resetProduct(){
-   this.productUpdated.emit();
+   this.closeForm.emit();
  }
 
   get diagnostic() { return JSON.stringify(this.product); }

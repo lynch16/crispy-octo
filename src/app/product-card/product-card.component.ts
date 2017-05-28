@@ -26,9 +26,11 @@ export class ProductCardComponent {
     });
   }
 
-  handleReset(product, oldProduct){
-    product.editting = false;
-    this.getProducts();
+  handleReset(product){
+    if(product.editting == true){
+      product.editting = false;
+      this.getProducts();
+    } 
   }
 
 }

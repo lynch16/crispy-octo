@@ -1,15 +1,10 @@
 <ul>
   <li *ngFor="let product of products">
-    <div class="product-card">
+    <div *ngIf="!product.editting" class="product-card">
       <h3 (dblclick)="product.editting = true">{{product.name}}</h3>
-      <!-- <img (dblclick)="editProduct(product)" src="{{product.picture_url}}" alt="picture_url"> -->
+      <img src="{{product.picture_url}}" alt="picture_url">
     </div>
-    <!-- <input class="edit"
-           #updatedProduct
-           [value]="product.name"
-           (keyup.escape)="product.editting = false"
-           (keyup.enter)="updateProduct(product, updatedProduct.value)"> -->
 
-    <app-new-product-form *ngIf="product.editting" [editting]="product.editting" [product]="product" (productUpdated)="handleReset(product)"></app-new-product-form>
+    <app-new-product-form *ngIf="product.editting" [editting]="product.editting" [product]="product" (closeForm)="handleReset(product)"></app-new-product-form>
   </li>
 </ul>
