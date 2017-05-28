@@ -17,10 +17,9 @@ export class NewProductFormComponent {
   sizes = ['xs', 'sm', 'md', 'lg', 'xl']
   types = ['shirt', 'bandana']
   submitted = false;
-  oldProduct: Product;
 
   constructor(private productService: ProductService) {
-    this.oldProduct = this.product;
+
   }
 
   uploadImage(fileInput: any){
@@ -55,7 +54,6 @@ export class NewProductFormComponent {
  }
 
  resetProduct(){
-   this.product = this.oldProduct
    this.productUpdated.emit();
  }
 

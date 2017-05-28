@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductService } from '../product.service'
 import { Product } from '../product'
 
@@ -8,7 +8,7 @@ import { Product } from '../product'
   providers: [ProductService],
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent {
 
   products: Product[];
   pIndex: number;
@@ -20,13 +20,15 @@ export class ProductCardComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   getProducts() {
-    console.log('here')
     this.productService.getProducts().subscribe(products => {
       this.products = products;
     });
   }
+
+  handleReset(product, oldProduct){
+    product.editting = false;
+    this.getProducts();
+  }
+
 }

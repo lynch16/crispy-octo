@@ -10,6 +10,6 @@
            (keyup.escape)="product.editting = false"
            (keyup.enter)="updateProduct(product, updatedProduct.value)"> -->
 
-    <app-new-product-form *ngIf="product.editting" [editting]="product.editting" [product]="product" (oldProduct)="product" (productUpdated)="product.editting = false"></app-new-product-form>
+    <app-new-product-form *ngIf="product.editting" [editting]="product.editting" [product]="product" (productUpdated)="handleReset(product)"></app-new-product-form>
   </li>
 </ul>
