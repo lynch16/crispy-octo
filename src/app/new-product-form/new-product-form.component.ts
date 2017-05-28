@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input,  Output, EventEmitter } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service'
 
@@ -10,19 +10,24 @@ import { ProductService } from '../product.service'
 })
 export class NewProductFormComponent {
 
+  @Input() product = new Product(null, null, null, null, "shirt", null, null); //id, name, quantity, size, ptype, price, image_base;
+  @Input() editting = false;
+  @Output() productUpdated = new EventEmitter();
+
   sizes = ['xs', 'sm', 'md', 'lg', 'xl']
   types = ['shirt', 'bandana']
-  model = new Product('', null, '', '', null, null);
   submitted = false;
+  oldProduct: Product;
 
   constructor(private productService: ProductService) {
+    this.oldProduct = this.product;
   }
 
   uploadImage(fileInput: any){
     if (fileInput.target.files && fileInput.target.files[0]){
       let reader = new FileReader();
       reader.onload = (e: any) => {
-        this.model.image_base = e.target.result;
+        this.product.image_base = e.target.result;
       }
       reader.readAsDataURL(fileInput.target.files[0]);
     }
@@ -32,12 +37,28 @@ export class NewProductFormComponent {
     this.productService.createProduct(product);
   }
 
+  editProduct(product){
+    this.productService.editProduct(product);
+  }
+
   onSubmit() {
-    console.log('submitted')
-    this.addProduct(this.model)
+    if(this.editting === true) {
+      console.log('Edits Submitted')
+      this.editProduct(this.product);
+      this.productUpdated.emit();
+      this.editting = false;
+    } else {
+      console.log('New Product Submitted')
+      this.addProduct(this.product)
+    }
     this.submitted = true;
  }
 
-  get diagnostic() { return JSON.stringify(this.model); }
+ resetProduct(){
+   this.product = this.oldProduct
+   this.productUpdated.emit();
+ }
+
+  get diagnostic() { return JSON.stringify(this.product); }
 
 }

@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :set_product, only: [:update, :destroy]
 
   def create
     @product = Product.new(product_params)
@@ -24,6 +24,10 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:model).permit(:name, :quantity, :type, :size, :price, :image_base)
+    params.require(:product).permit(:name, :quantity, :ptype, :size, :price, :image_base)
+  end
+
+  def set_product
+    @product = Product.find_by(id: params[:id])
   end
 end

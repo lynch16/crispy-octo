@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { GameCanvasComponent } from './game-canvas/game-canvas.component';
 import { NewProductFormComponent } from './new-product-form/new-product-form.component';
+import { EditProductFormComponent } from './edit-product-form/edit-product-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductCardComponent,
     GameCanvasComponent,
-    NewProductFormComponent
+    NewProductFormComponent,
+    EditProductFormComponent
   ],
   imports: [
     BrowserModule,

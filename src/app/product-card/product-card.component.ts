@@ -11,15 +11,22 @@ import { Product } from '../product'
 export class ProductCardComponent implements OnInit {
 
   products: Product[];
+  pIndex: number;
+  edittable: boolean = false;
 
   constructor(private productService: ProductService) {
     this.productService.getProducts().subscribe(products => {
       this.products = products;
-      console.log(products);
     });
   }
 
   ngOnInit() {
   }
 
+  getProducts() {
+    console.log('here')
+    this.productService.getProducts().subscribe(products => {
+      this.products = products;
+    });
+  }
 }
