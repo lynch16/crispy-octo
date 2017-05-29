@@ -30,7 +30,7 @@ export class ProductCardComponent {
     if(product.editting == true){
       product.editting = false;
       this.getProducts();
-    } 
+    }
   }
 
 }
