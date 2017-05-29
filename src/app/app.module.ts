@@ -8,7 +8,6 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { GameCanvasComponent } from './game-canvas/game-canvas.component';
 import { NewProductFormComponent } from './new-product-form/new-product-form.component';
 import { NewProductListingFormComponent } from './new-product-listing-form/new-product-listing-form.component';
-import { ProductListingCardComponent } from './product-listing-card/product-listing-card.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { ProductListingCardComponent } from './product-listing-card/product-list
     ProductCardComponent,
     GameCanvasComponent,
     NewProductFormComponent,
-    NewProductListingFormComponent,
-    ProductListingCardComponent
+    NewProductListingFormComponent
   ],
   imports: [
     BrowserModule,

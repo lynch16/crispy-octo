@@ -3,6 +3,7 @@
     <div class="product-card">
       <h3 (dblclick)="product.editting = true">{{product.name}}</h3>
       <h5>{{product.id}}</h5>
+      <h5 *ngFor="let listing of product.product_listings">{{listing.id}}</h5>
       <img src="{{product.picture_url}}" alt="picture_url">
     </div>
 

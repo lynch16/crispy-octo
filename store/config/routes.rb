@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :products, only: [:index, :show]
-  resources :product_listings, only: [:index, :show]
 
   namespace :admin do
     resources :products, only: [:create, :update, :destroy]

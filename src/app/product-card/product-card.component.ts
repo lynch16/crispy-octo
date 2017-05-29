@@ -16,6 +16,7 @@ export class ProductCardComponent {
 
   constructor(private productService: ProductService) {
     this.productService.getProducts().subscribe(products => {
+      console.log(products)
       this.products = products;
     });
   }
