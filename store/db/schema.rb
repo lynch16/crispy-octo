@@ -10,14 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524132736) do
+ActiveRecord::Schema.define(version: 20170529033250) do
+
+  create_table "product_listings", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "quantity",   default: 0
+    t.string   "size"
+    t.integer  "price",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "ptype",                default: "shirt"
-    t.integer  "quantity",             default: 0
-    t.string   "size"
-    t.integer  "price",                default: 0
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"

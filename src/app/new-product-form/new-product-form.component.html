@@ -1,33 +1,12 @@
 <div class="container">
   <h1>Product Form</h1>
 
-  <form (ngSubmit)="onSubmit() "#productForm="ngForm">
+  <form (ngSubmit)="onSubmit(); productForm.reset() "#productForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class='form-control' id="name"
              required
              [(ngModel)]="product.name" name="name">
-    </div>
-
-    <div class="form-group">
-      <label for="quantity">Quantity</label>
-      <input type="text" class="form-control" id="quantity"
-             [(ngModel)]="product.quantity" name="quantity">
-    </div>
-
-    <div class="form-group">
-      <label for="size">Size</label>
-      <select class="form-control" id="size"
-              required
-              [(ngModel)]="product.size" name=size>
-        <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="price">Price (in cents)</label>
-      <input type="text" class="form-control" id="price"
-             [(ngModel)]="product.price" name="price">
     </div>
 
     <div class="form-group">

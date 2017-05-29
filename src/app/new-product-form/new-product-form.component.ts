@@ -10,11 +10,10 @@ import { ProductService } from '../product.service'
 })
 export class NewProductFormComponent {
 
-  @Input() product = new Product(null, null, null, null, "shirt", null, null); //id, name, quantity, size, ptype, price, image_base;
+  @Input() product = new Product(null, null, null, null, "shirt", null, null); //id, name, ptype, image_base;
   @Input() editting = false;
   @Output() closeForm = new EventEmitter();
 
-  sizes = ['xs', 'sm', 'md', 'lg', 'xl']
   types = ['shirt', 'bandana']
   submitted = false;
 
