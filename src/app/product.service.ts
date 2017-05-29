@@ -17,12 +17,10 @@ export class ProductService {
   createProduct(product){
     return this.http.post('http://localhost:3000/admin/products', {product})
       .map(res => res.json())
-      .subscribe(err => console.log(err))
   }
 
   editProduct(product){
     return this.http.put('http://localhost:3000/admin/products/' + product.id, {product})
       .map(res => res.json())
-      .subscribe(err => console.log(err))
   }
 }

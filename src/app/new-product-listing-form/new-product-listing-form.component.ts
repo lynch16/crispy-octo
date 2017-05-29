@@ -18,16 +18,25 @@ export class NewProductListingFormComponent {
   sizes = ['xs', 'sm', 'md', 'lg', 'xl']
   types = ['shirt', 'bandana']
   submitted = false;
+  errors: any;
 
   constructor(private productService: ProductListingService) {
   }
 
   addProduct(productListing: ProductListing){
-    this.productService.createProductListing(productListing);
+    this.productService.createProductListing(productListing)
+      .subscribe(
+        data => console.log(data),
+        error => (this.errors = error._body)
+      )
   }
 
   editProduct(productListing){
-    this.productService.editProductListing(productListing);
+    this.productService.editProductListing(productListing)
+      .subscribe(
+        data => console.log(data),
+        error => (this.errors = error._body)
+      )
   }
 
   onSubmit() {

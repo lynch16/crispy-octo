@@ -16,6 +16,7 @@ export class NewProductFormComponent {
 
   types = ['shirt', 'bandana']
   submitted = false;
+  errors: any;
 
   constructor(private productService: ProductService) {
   }
@@ -31,11 +32,19 @@ export class NewProductFormComponent {
   }
 
   addProduct(product: Product){
-    this.productService.createProduct(product);
+    this.productService.createProduct(product)
+      .subscribe(
+        data => console.log(data),
+        error => (this.errors = error._body)
+      )
   }
 
   editProduct(product){
-    this.productService.editProduct(product);
+    this.productService.editProduct(product)
+      .subscribe(
+        data => console.log(data),
+        error => (this.errors = error._body)
+      )
   }
 
   onSubmit() {

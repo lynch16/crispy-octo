@@ -6,6 +6,8 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       @product.parse_image(request.host_with_port)
       render json: @product
+    else
+      render json: {errors: @product.errors.full_messages }, status: 422
     end
   end
 
@@ -13,6 +15,8 @@ class Admin::ProductsController < ApplicationController
     @product.update(product_params)
     if @product.save
       render json: @product
+    else
+      render json: {errors: @product.errors.full_messages }, status: 422
     end
   end
 
