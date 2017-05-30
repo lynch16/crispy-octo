@@ -1,0 +1,27 @@
+.size-unavail {
+  text-decoration: line-through;
+}
+
+.products {
+  width: 100%;
+  display: flex;
+  border-spacing: 1em;
+}
+
+.product-card {
+  display: table-cell;
+  margin: 0 auto;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.product-card > .product-info > .sizes {
+  display: block;
+  float: right;
+}
+
+.product-card > .admin {
+  display: block;
+}
