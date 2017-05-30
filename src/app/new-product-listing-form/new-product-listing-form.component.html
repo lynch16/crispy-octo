@@ -1,46 +1,32 @@
-<div class="container">
-  <h1>Product Listing Form</h1>
+<h1>Product Listing Form</h1>
 
-  <form (ngSubmit)="onSubmit()"#productListingForm="ngForm">
+<form (ngSubmit)="onSubmit()"#productListingForm="ngForm">
 
-    <div *ngIf="this.errors" class="error Messages">
-      <li>{{this.errors}}</li>
-    </div>
+  <div *ngIf="this.errors" class="error Messages">
+    <li>{{this.errors}}</li>
+  </div>
 
-    <div class="form-group">
-      <label for="product_id">Product ID</label>
-      <input type="text" class="form-control" id="product_id"
-             required
-             [(ngModel)]="productListing.product_id" name="product_id">
-      <!-- <select class="form-control"
-              required
-              [(ngModel)]="productListing.product_id" name="product_id">
-            <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
-      </select> -->
-    </div>
+  <div class="form-group">
+    <label for="quantity">Quantity</label>
+    <input type="text" class="form-control" id="quantity"
+           [(ngModel)]="productListing.quantity" name="quantity">
+  </div>
 
-    <div class="form-group">
-      <label for="quantity">Quantity</label>
-      <input type="text" class="form-control" id="quantity"
-             [(ngModel)]="productListing.quantity" name="quantity">
-    </div>
+  <div class="form-group">
+    <label for="size">Size</label>
+    <select class="form-control" id="size"
+            required
+            [(ngModel)]="productListing.size" name=size>
+      <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
+    </select>
+  </div>
 
-    <div class="form-group">
-      <label for="size">Size</label>
-      <select class="form-control" id="size"
-              required
-              [(ngModel)]="productListing.size" name=size>
-        <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
-      </select>
-    </div>
+  <div class="form-group">
+    <label for="price">Price (in cents)</label>
+    <input type="text" class="form-control" id="price"
+           [(ngModel)]="productListing.price" name="price">
+  </div>
 
-    <div class="form-group">
-      <label for="price">Price (in cents)</label>
-      <input type="text" class="form-control" id="price"
-             [(ngModel)]="productListing.price" name="price">
-    </div>
-
-    <button type="submit" class="btn btn-success">Submit</button>
-    <button type="button" (click)="resetProduct(); productListingForm.reset()" class="btn btn-success">Clear/Cancel</button>
-  </form>
-</div>
+  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="button" (click)="resetProduct(); productListingForm.reset()" class="btn btn-success">Clear/Cancel</button>
+</form>

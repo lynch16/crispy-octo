@@ -10,7 +10,7 @@ import { ProductService } from '../product.service'
 })
 export class NewProductFormComponent {
 
-  @Input() product = new Product(null, null, null, null, "shirt", null, null); //id, name, ptype, image_base;
+  @Input() product = new Product(null, null, "shirt", null, null); //id, name, ptype, image_base;
   @Input() editting = false;
   @Output() closeForm = new EventEmitter();
 
@@ -34,15 +34,18 @@ export class NewProductFormComponent {
   addProduct(product: Product){
     this.productService.createProduct(product)
       .subscribe(
-        data => console.log(data),
-        error => (this.errors = error._body)
+        data => this.product = data,
+        error => (this.errors = error._body),
       )
   }
 
   editProduct(product){
     this.productService.editProduct(product)
       .subscribe(
-        data => console.log(data),
+        data => {
+          this.product.picture_url = data.picture_url;
+          this.product = data
+        },
         error => (this.errors = error._body)
       )
   }

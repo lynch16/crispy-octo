@@ -1,4 +1,4 @@
-import { Component, Input,  Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input,  Output, EventEmitter } from '@angular/core';
 import { ProductListing } from '../product-listing';
 import { Product } from '../product';
 import { ProductListingService } from '../product-listing.service'
@@ -9,8 +9,9 @@ import { ProductListingService } from '../product-listing.service'
   styleUrls: ['./new-product-listing-form.component.css'],
   providers: [ProductListingService]
 })
-export class NewProductListingFormComponent {
+export class NewProductListingFormComponent implements OnInit{
 
+  @Input() product;
   @Input() productListing = new ProductListing(null, null, null, null, null); //id, product_id, quantity, size, price;
   @Input() editting = false;
   @Output() closeForm = new EventEmitter();
@@ -23,10 +24,22 @@ export class NewProductListingFormComponent {
   constructor(private productService: ProductListingService) {
   }
 
+  ngOnInit() {
+    this.productListing.product_id = this.product.id
+  }
+
   addProduct(productListing: ProductListing){
+    console.log(this.product)
     this.productService.createProductListing(productListing)
       .subscribe(
-        data => console.log(data),
+        data => {
+          this.productListing = data;
+          if(!this.product.product_listings){
+            this.product.product_listings = [this.productListing];
+          } else {
+            this.product.product_listings.push(this.productListing);
+          }
+        },
         error => (this.errors = error._body)
       )
   }

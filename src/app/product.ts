@@ -2,10 +2,8 @@ export class Product {
   constructor(
     public id: number,
     public name: string,
-    public quantity: number,
-    public size: string,
     public ptype: string,
-    public price: number,
     public image_base: any,
+    public picture_url: any
   ) {}
 }

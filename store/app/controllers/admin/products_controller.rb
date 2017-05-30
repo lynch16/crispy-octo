@@ -14,6 +14,9 @@ class Admin::ProductsController < ApplicationController
   def update
     @product.update(product_params)
     if @product.save
+      if !!params[:product][:image_base]
+        @product.parse_image(request.host_with_port)
+      end
       render json: @product
     else
       render json: {errors: @product.errors.full_messages }, status: 422

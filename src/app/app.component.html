@@ -1,5 +1,6 @@
-<h1>
-  {{title}}
+<button type="button" name="addProduct" (click)="addProduct = !addProduct">Toggle Add New Product</button>
+<app-new-product-form *ngIf="addProduct"></app-new-product-form>
+<br><br>
+<div class="products">
   <app-product-card></app-product-card>
-  <app-new-product-form></app-new-product-form>
-</h1>
+</div>

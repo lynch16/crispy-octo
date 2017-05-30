@@ -11,12 +11,12 @@ import { Product } from '../product'
 export class ProductCardComponent {
 
   products: Product[];
+  sizes = ['xs', 'sm', 'md', 'lg', 'xl']
   pIndex: number;
   edittable: boolean = false;
 
   constructor(private productService: ProductService) {
     this.productService.getProducts().subscribe(products => {
-      console.log(products)
       this.products = products;
     });
   }
@@ -28,10 +28,14 @@ export class ProductCardComponent {
   }
 
   handleReset(product){
-    if(product.editting == true){
-      product.editting = false;
-      this.getProducts();
-    }
+    product.editting = false;
+    product.addListing = false;
   }
 
+  sizeAvailable(product, size) {
+    let sizes = product.product_listings.map(listing => {
+      return listing.size
+    });
+    return sizes.includes(size);
+  }
 }

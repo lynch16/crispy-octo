@@ -1,13 +1,20 @@
-<ul>
-  <li *ngFor="let product of products">
-    <div class="product-card">
-      <h3 (dblclick)="product.editting = true">{{product.name}}</h3>
-      <h5>{{product.id}}</h5>
-      <h5 *ngFor="let listing of product.product_listings">{{listing.id}}</h5>
-      <img src="{{product.picture_url}}" alt="picture_url">
+<div class="product-card" *ngFor="let product of products">
+  <h3>{{product.name}} | {{product.id}}</h3>
+  <img [src]="product.picture_url" alt="picture_url">
+  <div class="product-info">
+    <div class="sizes">
+      <div *ngFor="let size of sizes" [ngClass]="sizeAvailable(product, size) ? 'size-avail' : 'size-unavail'">
+        {{size}}
+      </div>
     </div>
-
-    <app-new-product-form *ngIf="product.editting" [editting]="product.editting" [product]="product" (closeForm)="handleReset(product)"></app-new-product-form>
-  </li>
-</ul>
-<app-new-product-listing-form></app-new-product-listing-form>
+  </div>
+  <div class="admin">
+    <button type="button" name="edit" (click)="product.editting = !product.editting">Toggle Product Edit Form</button> <br>
+    <button type="button" name="newListing" (click)="product.addListing = !product.addListing">Toggle New Product Listing Form</button>
+    <app-new-product-listing-form *ngIf="product.addListing" [product]="product" (closeForm)="handleReset(product)"></app-new-product-listing-form>
+    <app-new-product-form *ngIf="product.editting"
+                          [editting]="product.editting"
+                          [product]="product"
+                          (closeForm)="handleReset(product)"></app-new-product-form>
+  </div>
+</div>
