@@ -10,9 +10,10 @@ import { ProductService } from '../product.service'
 })
 export class NewProductFormComponent {
 
-  @Input() product = new Product(null, null, "shirt", null, null); //id, name, ptype, image_base;
+  @Input() product = new Product(null); //id, name, ptype, image_base;
   @Input() editting = false;
   @Output() closeForm = new EventEmitter();
+  @Output() refreshProducts = new EventEmitter();
 
   types = ['shirt', 'bandana']
   submitted = false;
@@ -34,8 +35,11 @@ export class NewProductFormComponent {
   addProduct(product: Product){
     this.productService.createProduct(product)
       .subscribe(
-        data => this.product = data,
+        data => {
+          this.product = data
+        },
         error => (this.errors = error._body),
+        () => this.refreshProducts.emit(this.product)
       )
   }
 
@@ -66,7 +70,4 @@ export class NewProductFormComponent {
  resetProduct(){
    this.closeForm.emit();
  }
-
-  get diagnostic() { return JSON.stringify(this.product); }
-
 }

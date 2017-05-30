@@ -11,7 +11,7 @@ import { ProductListingService } from '../product-listing.service'
 })
 export class NewProductListingFormComponent implements OnInit{
 
-  @Input() product;
+  @Input() product: Product;
   @Input() productListing = new ProductListing(null, null, null, null, null); //id, product_id, quantity, size, price;
   @Input() editting = false;
   @Output() closeForm = new EventEmitter();
@@ -29,7 +29,6 @@ export class NewProductListingFormComponent implements OnInit{
   }
 
   addProduct(productListing: ProductListing){
-    console.log(this.product)
     this.productService.createProductListing(productListing)
       .subscribe(
         data => {
@@ -68,7 +67,4 @@ export class NewProductListingFormComponent implements OnInit{
  resetProduct(){
    this.closeForm.emit();
  }
-
-  get diagnostic() { return JSON.stringify(this.productListing); }
-
 }

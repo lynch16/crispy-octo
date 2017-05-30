@@ -1,9 +1,13 @@
+<button type="button" name="addProduct" (click)="addProduct = !addProduct">Toggle Add New Product</button>
+<app-new-product-form *ngIf="addProduct" (refreshProducts)="add($event)"></app-new-product-form>
+
+
 <div class="product-card" *ngFor="let product of products">
   <h3>{{product.name}} | {{product.id}}</h3>
   <img [src]="product.picture_url" alt="picture_url">
   <div class="product-info">
     <div class="sizes">
-      <div *ngFor="let size of sizes" [ngClass]="sizeAvailable(product, size) ? 'size-avail' : 'size-unavail'">
+      <div *ngFor="let size of sizes" [ngClass]="product.sizeAvailable(size) ? 'size-avail' : 'size-unavail'">
         {{size}}
       </div>
     </div>
