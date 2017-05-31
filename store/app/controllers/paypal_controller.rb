@@ -7,5 +7,7 @@ class PaypalController < ApplicationController
   end
 
   def execute_payment
+    @payment = Tools::PaypalService.new.execute_payment(params[:paymentID], params[:payerID])
+    render json: @payment
   end
 end

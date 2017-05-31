@@ -30,8 +30,9 @@ export class PaypalButtonComponent implements AfterViewInit {
             return paypal.request.post('http://localhost:3000/paypal/execute-payment', {
                 paymentID: data.paymentID,
                 payerID:   data.payerID
-            }).then(function() {
+            }).then(function(data) {
               console.log('done')
+              console.log(data)
 
                 // The payment is complete!
                 // You can now show a confirmation message to the customer
