@@ -1,8 +1,7 @@
 class Admin::ProductsController < ApplicationController
-  before_action :set_product, only: [:update, :destroy]
+  before_action :set_product, only: [:create, :update, :destroy]
 
   def create
-    @product = Product.new(product_params)
     if @product.save
       @product.parse_image(request.host_with_port)
       render json: @product
@@ -35,6 +34,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id]) || Product.new(product_params)
   end
 end

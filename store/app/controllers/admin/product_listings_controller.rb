@@ -1,5 +1,5 @@
 class Admin::ProductListingsController < ApplicationController
-  before_action :set_product_listing, only: [:update, :destroy]
+  before_action :set_product_listing, only: [:create, :update, :destroy]
 
   def create
     @product_listing = ProductListing.new(product_listing_params)
@@ -31,6 +31,6 @@ class Admin::ProductListingsController < ApplicationController
   end
 
   def set_product_listing
-    @product_listing = ProductListing.find_by(id: params[:id])
+    @product_listing = ProductListing.find_by(id: params[:id]) || ProductListing.new(product_listing_params)
   end
 end

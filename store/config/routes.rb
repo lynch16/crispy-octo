@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :carts
   post 'paypal/create-payment', to: 'paypal#create_payment'
   post 'paypal/execute-payment', to: 'paypal#execute_payment'
 
